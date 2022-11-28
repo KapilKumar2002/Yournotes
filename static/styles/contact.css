@@ -1,0 +1,24 @@
+.mapouter{
+    width: 40%;
+}
+.contact-form{
+    width: 80%;
+}
+.contact-form form{
+    margin: 40px;
+}
+
+@media screen and (max-width: 994px) {
+    #map-form {
+      flex-direction: column;
+    }
+    .c1{
+        width: 100%;
+    }
+    .contact-form{
+        width: 100%;
+    }
+    .contact-form form{
+        margin: 10px;
+    }
+  }

@@ -1,0 +1,53 @@
+{% extends "notes/base.html" %}
+{% block title %} REGISTER {% endblock title %}
+{% block pagetitle %}REGISTER YOUR SELF WITH YOURNOTES!{% endblock pagetitle %}
+{% block pagedesc %}To Access student portal for NOTES{% endblock pagedesc %}
+{% block notesinfo %}
+<div class="container">
+    <div class="card my-5 bg-dark bg-opacity-10 border-0 w-100" id="rfp">
+        <form class="d-flex justify-content-evenly" id="register-form" method="post" action="">
+            {% csrf_token %}
+            <div class="rfc">
+                <div class="mb-4">
+                    <label for="firstname" class="form-label">First Name</label>
+                    <input type="text" name="firstname"  required class="form-control rounded-0" placeholder="First Name" id="firstname">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="mb-4">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" name="lastname"  required class="form-control rounded-0" placeholder="Last Name" id="lastname">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="mb-4">
+                    <label for="username" class="form-label">User Name</label>
+                    <input type="text" name="username" required  class="form-control rounded-0" placeholder="User Name" id="username">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+            </div>
+            <div class="rfc">
+                <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">Email ID</label>
+                    <input type="email" name="email" required class="form-control rounded-0" placeholder="Registered Email ID"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-4">
+                    <label for="password1" class="form-label">Password</label>
+                    <input type="password" name="password1" required  class="form-control rounded-0" placeholder="Password" id="password1">
+                </div>
+                <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                    <input type="password" required name="password2"  class="form-control rounded-0" placeholder="Password"
+                        id="exampleInputPassword1">
+                </div>
+                <div class="my-2 d-flex flex-row-reverse align-items-center rb">
+                    <button type="submit" class="btn btn-success fw-bold">Register</button>
+                </div>
+            </div>
+        </form>
+        <div class="ar d-flex justify-content-center align-items-center">
+            <span class="me-3">Already Register?</span>
+            <a class="link text-decoration-none opacity-75" href="/accounts/Studentlogin/"><button class="btn btn-warning text-light fw-bold">Log In</button></a>
+        </div>
+    </div>
+</div>
+{% endblock notesinfo %}

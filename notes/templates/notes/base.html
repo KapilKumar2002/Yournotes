@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOURNOTES || {% block title %} {% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/contact.css' %}">
+    <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/notes.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <!-- Your navbar -->
+    <nav class="navbar navbar-expand-lg bg-danger">
+        <div class="container-fluid">
+            <div class="d-flex flex-column">
+                <span class="navbar-brand fw-bold fs-3 text-light p-0 m-0" href="#">YOURNOTES</span>
+                <span class="text-light" style="font-size: 14px;">Last time Revision for your exam</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-evenly" style="width:40% ;">
+                    <li class="nav-item">
+                        <a class="nav-link active p-0 m-0 d-flex flex-column justify-content-center align-items-center"
+                            aria-current="page" href="/"><i class="bi bi-house-door-fill fs-4 text-warning"></i>
+                            <span class="fw-bold text-light" style="font-size: 12px;">HOME</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active p-0 m-0 d-flex flex-column justify-content-center align-items-center"
+                            aria-current="page" href="#"><i class="bi bi-body-text fs-4 text-warning"></i>
+                            <span class="fw-bold text-light" style="font-size: 12px;">SYLLABUS</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-0 m-0 active d-flex flex-column justify-content-center align-items-center"
+                            href="#"><i class="bi bi-book-fill fs-4 text-warning"></i>
+                            <span class="fw-bold text-light" style="font-size: 12px;">NOTES</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-0 m-0 active d-flex flex-column justify-content-center align-items-center"
+                            href="/contact-us/"><i class="bi bi-telephone-fill fs-4 text-warning"></i>
+                            <span class="fw-bold text-light" style="font-size: 12px;">CONTACT</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active p-0 m-0 d-flex flex-column justify-content-center align-items-center"
+                            aria-current="page" href="/accounts/Studentlogin/"><i
+                                class="bi bi-person-circle fs-4 text-warning"></i>
+                            <span class="fw-bold text-light" style="font-size: 12px;">LOGIN</span></a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+                {% if user.is_authenticated %}
+                <a class="nav-link disabled mx-3" aria-current="page">
+                    <span class="fw-bold text-light fs-5" style="font-size: 12px;">Welcome {{user.username}}</span></a>
+                {% endif %}
+                <form class="d-flex" role="search">
+                    <div class="input-group input-group-merge">
+                        <!-- Input -->
+                        <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+                        <!-- Button -->
+                        <span class="input-group-text p-0">
+                            <!-- Button -->
+                            <button class="btn btn-outline-light" type="button" aria-label="Search button">
+                                <i class="bi bi-search text-black-50"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                {% if user.is_authenticated %}
+                <a class="text-light mx-2" aria-current="page" href="/accounts/logout/">
+                    <span class="text-light fs-5" style="font-size: 12px;">logout</span></a>
+                {% endif %}
+                <!-- <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-danger" type="submit"><i
+                            class="bi bi-search text-light"></i></button>
+                </form> -->
+            </div>
+        </div>
+    </nav>
+    <div class="p-3 text-center bg-primary d-flex justify-content-evenly align-items-center"
+        style="--bs-bg-opacity: .3;height:15rem;">
+        <div class="col-md-5 p-lg-5 mx-auto my-5 d-flex flex-column justify-content-evenly align-items-center">
+            <h2 class="fw-bold text-dark">{% block pagetitle %} {% endblock pagetitle%}</h2>
+            <p class="fw-normal">{% block pagedesc %} {% endblock pagedesc %}</p>
+            <hr class="divider bg-white text-white rounded" style="width: 100px;height:7px;">
+            <!-- <a class="btn btn-outline-secondary" href="#">Coming soon</a> -->
+        </div>
+        <div class="">
+            <img src="https://www.hiarcs.com/images/Books_256.png" alt="" class="img-fluid">
+        </div>
+    </div>
+    <!-- <div class="bg-primary">
+        <div class="container p-3">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="py-5 py-lg-0 d-flex justify-content-center align-items-center flex-column">
+                    <h2 class="text-white fw-bold">Welcome to YOURNOTES</h2>
+                    <h5 class="text-white mb-4 lead">We try to provide you best notes for
+                        last time revision</h5>
+                    <a class="btn btn-success"
+                            href="/marketing/courses/course-filter-page/">Browse Courses</a> <a class="btn btn-white"
+                            href="/authentication/sign-in/">Are You Instructor?</a>
+                </div>
+                <div class="text-lg-end text-center col-xl-7 col-lg-6 col-md-12">
+                    <img src="https://www.freeiconspng.com/thumbs/book-icon/open-book-icon-free-books-and-education-13.png"
+                        alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div> -->
+    {% block notesinfo %}{% endblock notesinfo %}
+    <!-- footer  -->
+    <footer class="bg-danger p-5">
+        <div class="container pb-1 pb-lg-5">
+            <div class="row content-space-t-2">
+                <div class="col-lg-3 mb-7 mb-lg-0">
+
+                    <!-- List -->
+                    <ul class="list-unstyled list-py-1">
+                        <!-- <li><a class="link-sm link-light text-decoration-none my-2" href="#"><i class="bi-geo-alt-fill me-1"></i> 153 Williamson Plaza, Maggieberg</a></li> -->
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="tel:1-062-109-9222"><i
+                                    class="bi-telephone-inbound-fill me-1"></i> +91 78189 65010</a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="tel:1-062-109-9222"><i
+                                    class="bi bi-envelope-fill me-1"></i>neerajhans4u@gmail.com</a></li>
+                    </ul>
+                    <!-- End List -->
+
+                </div>
+                <!-- End Col -->
+
+                <div class="col-sm mb-7 mb-sm-0">
+                    <h5 class="text-white mb-3">Company</h5>
+
+                    <!-- List -->
+                    <ul class="list-unstyled list-py-1 mb-0">
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">About</a></li>
+                        <!-- <li><a class="link-sm link-light text-decoration-none my-2" href="#">Careers <span
+                                    class="badge bg-warning text-dark rounded-pill ms-1">We're hiring</span></a></li> -->
+                        <!-- <li><a class="link-sm link-light text-decoration-none my-2" href="#">Blog</a></li> -->
+                        <!-- <li><a class="link-sm link-light text-decoration-none my-2" href="#">Customers <i -->
+                        <!-- class="bi-box-arrow-up-right small ms-1"></i></a></li> -->
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Hire us</a></li>
+                    </ul>
+                    <!-- End List -->
+                </div>
+                <!-- End Col -->
+
+                <div class="col-sm mb-7 mb-sm-0">
+                    <h5 class="text-white mb-3">Features</h5>
+
+                    <!-- List -->
+                    <ul class="list-unstyled list-py-1 mb-0">
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Press <i
+                                    class="bi-box-arrow-up-right small ms-1"></i></a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Release Notes</a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Integrations</a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Pricing</a></li>
+                    </ul>
+                    <!-- End List -->
+                </div>
+                <!-- End Col -->
+
+                <div class="col-sm mb-7 mb-sm-0">
+                    <h5 class="text-white mb-3">Notes</h5>
+
+                    <!-- List -->
+                    <ul class="list-unstyled list-py-1 mb-0">
+                        <li><a class="link-sm link-light text-decoration-none my-5" href="#">Note1</a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Note2</a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Note3</a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Note4</a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#">Note5</a></li>
+                    </ul>
+                    <!-- End List -->
+                </div>
+                <!-- End Col -->
+
+                <div class="col-sm">
+                    <h5 class="text-white mb-3">Resources</h5>
+
+                    <!-- List -->
+                    <ul class="list-unstyled list-py-1 mb-5">
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#"><i
+                                    class="bi-question-circle-fill me-1"></i> Help</a></li>
+                        <li><a class="link-sm link-light text-decoration-none my-2" href="#"><i
+                                    class="bi-person-circle me-1"></i> Your Account</a></li>
+                    </ul>
+                    <!-- End List -->
+                </div>
+                <!-- End Col -->
+            </div>
+            <!-- End Row -->
+
+            <hr class="bg-light text-white" style="height: 2px;">
+
+            <div class="row mb-7">
+                <div class="col-sm mb-3 mb-sm-0">
+                    <!-- Socials -->
+                    <ul class="list-inline list-separator list-separator-light mb-0">
+                        <li class="list-inline-item">
+                            <a class="link-sm link-light text-decoration-none my-2" href="#">Privacy &amp; Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="link-sm link-light text-decoration-none my-2" href="#">Terms &amp; Conditions</a>
+                        </li>
+                        <!-- <li class="list-inline-item">
+                  <a class="link-sm link-light text-decoration-none my-2" href="#">Site Map</a>
+                </li> -->
+                    </ul>
+                    <!-- End Socials -->
+                </div>
+
+                <div class="col-sm-auto d-flex align-items-center">
+                    <!-- Socials -->
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                                <i class="bi-instagram text-light"></i>
+                            </a>
+                        </li>
+
+                        <li class="list-inline-item">
+                            <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                                <i class="bi-linkedin text-light"></i>
+                            </a>
+                        </li>
+
+                        <li class="list-inline-item">
+                            <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                                <i class="bi-twitter text-light"></i>
+                            </a>
+                        </li>
+
+                        <li class="list-inline-item">
+                            <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                                <i class="bi-github text-light"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                                <i class="bi-youtube text-light"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- End Socials -->
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="w-md-85 text-lg-center mx-lg-auto">
+                <p class="text-white-50 small">© YOURNOTES. 2022-2025. All rights reserved.</p>
+                <p class="text-white-50 small">When you visit or interact with our sites, services or tools, we or our
+                    authorised service providers may use cookies for storing information to help provide you with a
+                    better, faster and safer experience and for marketing purposes.</p>
+            </div>
+            <!-- End Copyright -->
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

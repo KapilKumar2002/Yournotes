@@ -1,0 +1,66 @@
+.container .notescard{
+    display: flex;
+    flex-direction: row;
+    height: 8.5rem;
+}
+.container .notescard .c{
+    display: flex;
+    justify-content: space-between;
+}
+.container .notescard .c1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.container .notescard .c2{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.container .notescard img{
+    width: 8rem;
+}
+.Box{
+    width:30%;
+    max-height: 37rem;
+    margin-right: 40px;
+}
+@media screen and (max-width: 994px) {
+    .parent-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .Box{
+        width: 100%;
+        margin-bottom: 3rem;
+        margin-right: 0px;
+    }
+    .Box ul{
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+    }
+  }
+@media screen and (max-width: 450px) {
+    .container .notescard{
+        display: block;
+        height: auto;
+    }
+    .container .notescard .c{
+        display: block;
+        height: auto;
+    }
+    .container .notescard .c2{
+        margin-top: 15px;
+        display: flex;
+    }
+    .container .notescard .c2 .btn{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        justify-content: center;
+    }
+    .container .notescard img{
+        width: 100%;
+    }
+  }

@@ -1,0 +1,31 @@
+{% extends "notes/base.html" %}
+{% block title %} LOG IN {% endblock title %}
+{% block pagetitle %}LOG IN TO YOUR ACCOUNT!{% endblock pagetitle %}
+{% block pagedesc %}To Access student portal for online test series and online classes{% endblock pagedesc %}
+{% block notesinfo %}
+<div class="container pb-5 d-flex justify-content-center">
+  <div class="card my-5 bg-dark bg-opacity-10 border-0 lfpc">
+    <form class="d-flex flex-column lf" action="/accounts/Studentlogin/" method="post">
+      {% csrf_token %}
+      <div class="mb-4">
+        <label for="exampleInputEmail1" class="form-label">Email ID</label>
+        <input type="text" name="username" required class="form-control rounded-0" placeholder="Registered Email ID" id="exampleInputEmail1"
+          aria-describedby="emailHelp">
+        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+      </div>
+      <div class="my-4">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" name="password" required class="form-control rounded-0" placeholder="Password" id="exampleInputPassword1">
+      </div>
+      <div class="my-2 d-flex justify-content-evenly align-items-center">
+        <a class="link text-decoration-none text-info opacity-75">Forgot password?</a>
+        <button type="submit" class="btn btn-success fw-bold">Login</button>
+      </div>
+    </form>
+    <div class="my-2 d-flex justify-content-evenly align-items-center">
+      <span>Don't have an account?</span>
+      <a href="/accounts/register/" class="text-decoration-none text-info">Register</a>
+    </div>
+  </div>
+</div>
+{% endblock notesinfo %}
